@@ -19,6 +19,7 @@ import {
 import { cn } from "@/lib/utils";
 import Headers from "@/components/headers/Headers";
 import Faq from "@/components/Faq/Faq";
+import ContactUs from "@/components/ContactUs";
 
 const features = [
   {
@@ -381,6 +382,44 @@ await pilot.chat("Compare with competitors");
         </div>
       </section>
 
+      {/* Final CTA */}
+      <section className="mx-auto max-w-6xl px-6 pb-16 text-center text-white">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="rounded-xl border border-indigo-500/30 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 p-8"
+        >
+          <h3 className="text-2xl font-semibold tracking-tight">
+            Ready to browse smarter?
+          </h3>
+          <p className="mx-auto mt-2 max-w-2xl text-white/70">
+            Start using your AI companion today. Navigate any website with
+            intelligent assistance.
+          </p>
+          <div className="mt-5 flex items-center justify-center gap-3">
+            <Button
+              className="bg-indigo-600 hover:bg-indigo-700 shadow-[0px_4px_32px_0_rgba(99,102,241,.70)]"
+              asChild
+              size="lg"
+            >
+              <Link href="/docs" className="gap-2">
+                Get Started <ArrowRight className="size-4" />
+              </Link>
+            </Button>
+            <Button
+              asChild
+              className="text-black shadow-[0_0_30px_rgba(255,255,255,0.75)] border-none"
+              size="lg"
+              variant="outline"
+            >
+              <Link href="#features">Learn More</Link>
+            </Button>
+          </div>
+        </motion.div>
+      </section>
+      <ContactUs />
       {/* FAQ */}
 
       <section id="faq" className="mx-auto max-w-6xl px-6 pb-20 text-white">
@@ -442,44 +481,6 @@ await pilot.chat("Compare with competitors");
             </motion.details>
           ))} */}
         </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="mx-auto max-w-6xl px-6 pb-16 text-center text-white">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="rounded-xl border border-indigo-500/30 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 p-8"
-        >
-          <h3 className="text-2xl font-semibold tracking-tight">
-            Ready to browse smarter?
-          </h3>
-          <p className="mx-auto mt-2 max-w-2xl text-white/70">
-            Start using your AI companion today. Navigate any website with
-            intelligent assistance.
-          </p>
-          <div className="mt-5 flex items-center justify-center gap-3">
-            <Button
-              className="bg-indigo-600 hover:bg-indigo-700 shadow-[0px_4px_32px_0_rgba(99,102,241,.70)]"
-              asChild
-              size="lg"
-            >
-              <Link href="/docs" className="gap-2">
-                Get Started <ArrowRight className="size-4" />
-              </Link>
-            </Button>
-            <Button
-              asChild
-              className="text-black shadow-[0_0_30px_rgba(255,255,255,0.75)] border-none"
-              size="lg"
-              variant="outline"
-            >
-              <Link href="#features">Learn More</Link>
-            </Button>
-          </div>
-        </motion.div>
       </section>
 
       <footer className="border-t border-white/10 py-8 text-center text-sm text-white/50">
