@@ -57,7 +57,7 @@ const FaqItem = ({
       </div>
 
       {!isLast && (
-        <div className="border-[0.5px]  border-[#E5E5E5] my-[12px]"></div>
+        <div className="border-[0.5px]  border-[#E5E5E5]/10 my-[12px]"></div>
       )}
     </div>
   );

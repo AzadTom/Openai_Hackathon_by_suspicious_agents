@@ -6,11 +6,16 @@ import { Button } from "../ui/button";
 import { motion } from "motion/react";
 import React from "react";
 import { useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store/store";
 
 const Headers = () => {
-
   const router = useRouter();
   const [open, setOpen] = React.useState(false);
+
+  const { login, id, img, name } = useSelector(
+    (state: RootState) => state.loginuserSlice
+  );
 
   return (
     <>
@@ -55,13 +60,27 @@ const Headers = () => {
             <Menu className="size-5 font-bold" />
           </button>
           <div className="hidden sm:flex sm:items-center sm:gap-8">
-            <Link href={'https://github.com/AmartyaGhoshyoo/Openai_Hackathon_by_suspicious_agents'} target="_blank">
+            <Link
+              href={
+                "https://github.com/AmartyaGhoshyoo/Openai_Hackathon_by_suspicious_agents"
+              }
+              target="_blank"
+            >
               <Github />
             </Link>
             <div>
-              <button onClick={()=>router.push("/signin")} className="h-[40px] w-[max-content] px-8 py-4 rounded-full bg-[#242424] border border-[#313131] flex justify-center items-center cursor-pointer">
-                Signin
-              </button>
+              {login ? (
+                <button className="h-[40px] w-[max-content] text-sm px-8 py-4 rounded-full bg-[#242424] border border-[#313131] flex justify-center items-center cursor-pointer">
+                  {name}
+                </button>
+              ) : (
+                <button
+                  onClick={() => router.push("/signin")}
+                  className="h-[40px] w-[max-content] px-8 py-4 rounded-full bg-[#242424] border border-[#313131] flex justify-center items-center cursor-pointer"
+                >
+                  Signin
+                </button>
+              )}
             </div>
           </div>
         </section>
@@ -80,9 +99,20 @@ const Headers = () => {
               className="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-[#0b0c0f] p-4"
             >
               <div className="mb-3 flex items-center justify-between px-4">
-                <div className="font-semibold tracking-tight text-white">
-                  Menu
-                </div>
+                {login ? (
+                  <button className="h-[42px] px-8 py-4 rounded-full bg-[#242424] border border-[#323232] text-white flex justify-center items-center">
+                    {name}
+                  </button>
+                ) : (
+                  <Link
+                    href={"/signin"}
+                    className="font-semibold tracking-tight text-white"
+                  >
+                    <button className="h-[42px] px-8 py-4 rounded-full bg-[#242424] border border-[#323232] text-white flex justify-center items-center">
+                      Signin
+                    </button>
+                  </Link>
+                )}
                 <button
                   aria-label="Close menu"
                   className="inline-flex items-center justify-center rounded-md border border-white/15 px-2.5 py-2 text-white/80 hover:bg-white/5"
